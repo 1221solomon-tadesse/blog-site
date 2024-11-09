@@ -7,6 +7,11 @@ const bookSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user", 
+    required: true,
+  },
 });
 module.exports = new mongoose.model("blogs", bookSchema);
  

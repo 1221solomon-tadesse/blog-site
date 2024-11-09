@@ -13,6 +13,5 @@ const bcrypt =require('bcrypt')
         res.status(201).json({message: 'user created succesfully',user:savedUser})
         
     }
-    
 
 module.exports={creatUser}

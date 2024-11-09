@@ -12,12 +12,32 @@ await newBlog.save().then(()=>{
  console.log(error)
  }
 })
+//fetch for spesfic user
+router.get("/ownPost/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    if (!userId) {
+      return res.status(400).json({ message: "User ID is required" });
+    }
+    const requests = await BorrowRequest.find({ userId })
+      .populate("PostId")
+      .populate("userId");
+    if (!posts || posts.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "you don't have any post" });
+    }
+    res.status(200).json({ requests });
+  } catch (error) {
+    console.error("Error fetching pots:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
 router.get("/latestPosts", async (req, res) => {
   try {
     const latestBlogs = await blogModel.find()
       .sort({ createdAt: -1 }) 
-      .limit(5); 
-
+      .limit(5);  
     res.status(200).json({ blogs: latestBlogs });
   } catch (error) {
     console.log(error);
@@ -26,7 +46,7 @@ router.get("/latestPosts", async (req, res) => {
 });
 router.get("/getBlogs",async(req,res)=>{
 try{
-books=await blogModel.find()
+blogs=await blogModel.find()
 res.status(200).json({blogs})
 }
 catch(error){

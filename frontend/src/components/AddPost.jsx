@@ -33,8 +33,8 @@ const AddPost = () => {
     }
   };
 
-  const handleBackToBooks = () => {
-    navigate("/Books");
+  const handleBackToBlogLists = () => {
+    navigate("./BlogList");
   };
 
   return (
@@ -95,7 +95,7 @@ const AddPost = () => {
           </button>
           <button
             type="button"
-            onClick={handleBackToBooks}
+            onClick={handleBackToBlogLists}
             className="px-4 py-2 bg-gray-300 text-gray-800 font-semibold rounded-md shadow hover:bg-gray-400 transition duration-200"
           >
             Back to Home

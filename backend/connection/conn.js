@@ -1,6 +1,12 @@
-const mongoose =  require("mongoose");
-mongoose
-  .connect(
-    "mongodb+srv://solomontadesse480:soll12@cluster.gzsbx.mongodb.net/?retryWrites=true&w=majority&appName=cluster"
-  )
-  .then(() => console.log("connected"));
+const mongoose = require("mongoose");
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect("mongodb://localhost:27017/blog-site", {});
+    console.log("Connected to local MongoDB");
+  } catch (error) {
+    console.error("Could not connect to MongoDB...", error);
+  }
+};
+
+connectDB();

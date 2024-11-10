@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const bookSchema = new mongoose.Schema({
   blogname: { type: String, required: true },
   description: { type: String, required: true },
@@ -9,9 +10,9 @@ const bookSchema = new mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "user", 
+    ref: "user",
     required: true,
   },
 });
+
 module.exports = new mongoose.model("blogs", bookSchema);
- 

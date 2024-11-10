@@ -1,7 +1,8 @@
 const userModel=require("../models/userModel")
 const bcrypt =require('bcrypt')
  async function creatUser(req,res){
-        const {name ,email ,password }=req.body
+ const {data} = req.body
+    const {name ,email ,password }=req.body
         const hashedPassword=await bcrypt.hash (password,10)
         const newUser=new userModel({
             name,
@@ -10,6 +11,7 @@ const bcrypt =require('bcrypt')
             role:'user'
         })
         const savedUser=await newUser.save()
+        console.log(savedUser)
         res.status(201).json({message: 'user created succesfully',user:savedUser})
         
     }

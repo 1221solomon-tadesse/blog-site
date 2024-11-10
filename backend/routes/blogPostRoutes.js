@@ -1,35 +1,38 @@
 const router=require("express").Router()
 const blogModel=require("../models/blogsmodel")
-router.post('/add',async(req,res)=>{
- try{
-const data =req.body
-const newBlog=new blogModel(data)
-await newBlog.save().then(()=>{
-    res.status(200).json({message:" added succcessfuly"})
-})
- }
- catch(error){
- console.log(error)
- }
-})
-//fetch for spesfic user
-router.get("/ownPost/:id", async (req, res) => {
+
+router.post("/add", async (req, res) => {
+  try {
+    const { data, userId } = req.body;
+    const newBlog = new blogModel({
+      ...data, 
+      userId: userId,
+    });
+    await newBlog.save();
+    res.status(200).json({ message: "Added successfully" });
+  } catch (error) {
+    console.error("Error adding blog:", error);
+    res.status(500).json({ message: "Error adding blog" });
+  }
+});
+
+router.get("/getUserBlogs/:id", async (req, res) => {
   try {
     const userId = req.params.id;
+
     if (!userId) {
       return res.status(400).json({ message: "User ID is required" });
     }
-    const requests = await BorrowRequest.find({ userId })
-      .populate("PostId")
-      .populate("userId");
-    if (!posts || posts.length === 0) {
-      return res
-        .status(404)
-        .json({ message: "you don't have any post" });
+
+    const blogs = await blogModel.find({ userId }).populate("userId");
+
+    if (!blogs || blogs.length === 0) {
+      return res.status(404).json({ message: "No blogs found for this user" });
     }
-    res.status(200).json({ requests });
+
+    res.status(200).json({ blogs });
   } catch (error) {
-    console.error("Error fetching pots:", error);
+    console.error("Error fetching user blogs:", error);
     res.status(500).json({ message: "Server error" });
   }
 });
@@ -67,7 +70,6 @@ router.get('/getBlogs/search', async (req, res) => {
         { description: { $regex: new RegExp(escapedQuery, 'i') } },
       ],
     });
-
     return res.status(200).json({ blogs });
   } catch (error) {
     console.error('Error fetching search results:', error);
@@ -88,7 +90,7 @@ router.get("/getBlogs/:id", async (req, res) => {
   }
 });
 
-router.put("/updateBooks/:id", async (req, res) => {
+router.put("/updateBlogs/:id", async (req, res) => {
   const id = req.params.id;
   const { blogname, description,  image} = req.body;
 
@@ -99,7 +101,7 @@ router.put("/updateBooks/:id", async (req, res) => {
       { new: true, runValidators: true } 
     );
 
-    if (!book) {
+    if (!blog) {
       return res.status(404).json({ message: "blog not found" });
     }
 

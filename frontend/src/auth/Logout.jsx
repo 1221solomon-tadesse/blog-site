@@ -9,7 +9,7 @@ const Logout = () => {
     localStorage.removeItem('email')
     localStorage.removeItem('userId')
     window.localStorage.setItem("isloggedIn",false)
-    navigate('/Home');
+    navigate('/');
   };
   return (
     <button className="hover:text-blue-600"  onClick={handleLogout}>

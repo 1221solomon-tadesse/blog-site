@@ -6,20 +6,25 @@ import Blogs from "./components/BlogList";
 import Login from "./auth/Login";
 import Signup from "./auth/Signup";
 import Mypost from "./components/Mypost";
+import Footer from "./components/Footer";
+import ProtectedRoutes from "./components/ProtectedRoute";
+
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/Home" element={<Home />} />
-        <Route path="/AddPost" element={<Addpost />} />
-        <Route path="/BlogList" element={<Blogs />} />
-        <Route path="/Mypost" element={< Mypost/>} />
+        <Route path="/" element={<Home />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Signup" element={<Signup />} />
+        <Route element={<ProtectedRoutes allowedRoles={[ "user"]} />}>
+          <Route path="/AddPost" element={<Addpost />} />
+          <Route path="/BlogList" element={<Blogs />} />
+          <Route path="/Mypost" element={<Mypost />} />
+        </Route>
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 }

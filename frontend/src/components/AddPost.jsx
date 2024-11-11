@@ -39,7 +39,7 @@ const AddPost = () => {
   };
 
   return (
-    <div className="flex bg-slate-200  w-1/2  p-6 justify-center border-2 rounded-lg shadow-lg  m-auto mt-20">
+    <div className="flex bg-slate-200  lg:w-1/2   mx-auto p-3 justify-center border-2 rounded-lg shadow-lg  m-auto mt-20 ">
       <form onSubmit={handleSubmit} className="w-full max-w-lg">
         <h2 className="text-2xl font-bold text-center m-4">Add New Post</h2>
 

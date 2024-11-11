@@ -24,7 +24,7 @@ const BlogSection = ({ data, isLoading }) => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-6 m-20">
+    <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-6 m-20 mx-auto">
       {data.map((blog) => (
         <div key={blog._id} className="shadow-lg rounded-lg overflow-hidden">
           {blog.image && (

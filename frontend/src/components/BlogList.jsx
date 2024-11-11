@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BlogSection from "./BlogSection"; 
-
-const Blogs = () => {
+const BlogList = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,4 +49,4 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+export default BlogList;

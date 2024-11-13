@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import image from "../assets/Sign.png";
+import { UserContext } from "../contexts/UserContext";
+
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
   const [serverError, setServerError] = useState(null);
   const [loading, setLoading] = useState(false);
+   const { setIsLoggedIn } = useContext(UserContext); 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,7 +26,9 @@ const Login = () => {
       localStorage.setItem("role", role);
       localStorage.setItem("userId", user?._id || "");
       localStorage.setItem("email", user?.email || "");
-      localStorage.setItem("isloggedIn", true);
+      // localStorage.setItem("isloggedIn", true);
+
+      setIsLoggedIn(true);
 
       setLoading(false);
       if (role === "admin") {

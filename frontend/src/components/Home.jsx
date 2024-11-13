@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -42,10 +43,12 @@ const Home = () => {
 
   return (
     <div>
-      <div className="w-fit m-auto mt-8">
-        <h1 className="text-center p-5 bg-slate-400 text-2xl font-bold  ">Latest posts</h1>
+      <div className="w-fit m-auto mt-8 ">
+        <h1 className="text-center p-5 bg-slate-400 text-2xl font-bold  ">
+          Latest posts
+        </h1>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-6 m-20 ">
+      <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-6 m-20 mx-auto ">
         {data.map((blog) => (
           <div key={blog._id} className="shadow-lg rounded-lg overflow-hidden ">
             {blog.image && (
@@ -77,6 +80,12 @@ const Home = () => {
           </div>
         ))}
       </div>
+      <Link
+        to="/Login"
+        className="hover:text-blue-600 font-bold  text-center text-xl mx-auto ml-20"
+      >
+        All Posts ....
+      </Link>
     </div>
   );
 };

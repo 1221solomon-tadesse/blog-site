@@ -31,13 +31,10 @@ const Login = () => {
       setIsLoggedIn(true);
 
       setLoading(false);
-      if (role === "admin") {
+      if (role === "user") { 
         navigate("/BlogList");
-        alert("Admin logged in successfully!");
-      } else {
-        navigate("/BlogList");
-        alert("User logged in successfully!");
-      }
+    
+      } 
     } catch (error) {
       setLoading(false);
       if (error.response && error.response.status === 401) {

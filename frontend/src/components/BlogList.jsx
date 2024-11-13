@@ -10,7 +10,7 @@ const BlogList = () => {
         const response = await axios.get(
           "http://localhost:1000/api/v1/getBlogs"
         );
-        console.log("API response:", response);
+        // console.log("API response:", response);
         if (response.data && response.data.blogs) {
           setData(response.data.blogs);
         } else {

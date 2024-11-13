@@ -9,7 +9,7 @@ const AddPost = () => {
     image: "",
   });
   const userId = localStorage.getItem('userId') 
-  console.log(userId)
+  // console.log(userId)
   const navigate = useNavigate();
   const handleInputChange = (event) => {
     setData({
@@ -19,7 +19,7 @@ const AddPost = () => {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(data, userId)
+    // console.log(data, userId)
     try {
       await axios.post("http://localhost:1000/api/v1/add", { data , userId});
       setData({

@@ -14,7 +14,7 @@ const Signup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log(data);
+      // console.log(data);
       await axios.post("http://localhost:1000/user/register", data);
       setData({
         name: "",

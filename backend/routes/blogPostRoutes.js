@@ -52,40 +52,20 @@ try{
 blogs=await blogModel.find()
 res.status(200).json({blogs})
 }
-catch(error){
+catch(error){ 
     console.log(error)
 }
 })
-router.get('/getBlogs/search', async (req, res) => {
-  try {
-    const searchQuery = req.query.q;
-    if (!searchQuery) {
-      return res.status(200).json({ blogs: [] });
-    }
-    const escapedQuery = searchQuery.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-
-    const books = await blogModel.find({
-      $or: [
-        { blogname: { $regex: new RegExp(escapedQuery, 'i') } },
-        { description: { $regex: new RegExp(escapedQuery, 'i') } },
-      ],
-    });
-    return res.status(200).json({ blogs });
-  } catch (error) {
-    console.error('Error fetching search results:', error);
-    return res.status(500).json({ error: 'Error fetching search results' });
-  }
-});
 router.get("/getBlogs/:id", async (req, res) => {
   const { id } = req.params; 
   try {
     const blog = await blogModel.findById(id);
     if (!blog) {
-      return res.status(404).json({ message: "Book not found" });
+      return res.status(404).json({ message: "Blog not found" });
     }
     res.status(200).json({ blog }); 
   } catch (error) {
-    console.error("Error fetching book:", error);
+    console.error("Error fetching blogs:", error);
     res.status(500).json({ message: "Server error" });
   }
 });
@@ -107,7 +87,7 @@ router.put("/updateBlogs/:id", async (req, res) => {
 
     res.status(200).json({ message: "Data updated successfully.", blog });
   } catch (error) {
-    console.error("Error updating book:", error);
+    console.error("Error updating blog:", error);
     res.status(500).json({ message: "Server error" });
   }
 });

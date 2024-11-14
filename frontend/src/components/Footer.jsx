@@ -3,7 +3,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { FaInstagram } from "react-icons/fa";
-const Footer = () => {
+const Footer = () => {  
   return (
     <main>
       <footer className="bg-gray-800 text-white py-6">

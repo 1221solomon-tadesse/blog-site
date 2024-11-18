@@ -21,7 +21,10 @@ const AddPost = () => {
     event.preventDefault();
     // console.log(data, userId)
     try {
-      await axios.post("http://localhost:1000/api/v1/add", { data , userId});
+      await axios.post("https://blog-site-soll.onrender.com/api/v1/add", {
+        data,
+        userId,
+      });
       setData({
         blogname: "",
         description: "",

@@ -8,7 +8,7 @@ const BlogList = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1000/api/v1/getBlogs"
+          "https://blog-site-soll.onrender.com/api/v1/getBlogs"
         );
         // console.log("API response:", response);
         if (response.data && response.data.blogs) {

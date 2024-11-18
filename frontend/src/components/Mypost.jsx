@@ -46,11 +46,14 @@ const Mypost = () => {
   const handleDelete = async (postId) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:1000/api/v1/deleteBlog/${postId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.delete(
+        `https://blog-site-soll.onrender.com/api/v1/deleteBlog/${postId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setPosts(posts.filter((post) => post._id !== postId));
     } catch (error) {
       console.error("Error deleting blog post:", error);
@@ -70,7 +73,7 @@ const Mypost = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:1000/api/v1/updateBlogs/${editPostId}`,
+        `https://blog-site-soll.onrender.com/api/v1/updateBlogs/${editPostId}`,
         updatedBlog,
         {
           headers: {

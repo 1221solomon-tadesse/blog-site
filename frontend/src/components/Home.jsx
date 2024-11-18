@@ -11,7 +11,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1000/api/v1/latestPosts"
+          "https://blog-site-soll.onrender.com/api/v1/latestPosts"
         );
         if (response.data && response.data.blogs) {
           setData(response.data.blogs);

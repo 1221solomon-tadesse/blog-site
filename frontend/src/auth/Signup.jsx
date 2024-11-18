@@ -15,7 +15,10 @@ const Signup = () => {
     event.preventDefault();
     try {
       // console.log(data);
-      await axios.post("http://localhost:1000/user/register", data);
+      await axios.post(
+        "https://blog-site-soll.onrender.com/user/register",
+        data
+      );
       setData({
         name: "",
         email: "",

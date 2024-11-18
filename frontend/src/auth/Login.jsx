@@ -16,7 +16,7 @@ const Login = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:1000/auth/login",
+        "https://blog-site-soll.onrender.com/auth/login",
         data
       );
       console.log("Response Data:", response.data);

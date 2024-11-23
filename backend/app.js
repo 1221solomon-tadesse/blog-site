@@ -15,7 +15,6 @@ app.use(
     credentials: true,
   })
 );
-app.use((cors))
 app.use(bodyParser.json())
 app.use('/user',signupRoute)
 app.use('/auth',loginRoute)

@@ -3,8 +3,18 @@ const blogRoute =require('./routes/blogPostRoutes')
 const signupRoute=require('./routes/signup')
 const bodyParser=require('body-parser')
 const loginRoute=require('./routes/login')
-const app= express()
 const cors=require("cors")
+const app= express()
+
+app.use(
+  cors({
+    origin: "https://blog-site-frontend-2.onrender.com",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
+
 require("./connection/conn")
 app.use(cors())
 app.use(bodyParser.json())

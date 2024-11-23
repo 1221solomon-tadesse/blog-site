@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+const API_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:1000";
 const Home = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -11,7 +12,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://blog-site-soll.onrender.com/api/v1/latestPosts"
+           `${API_URL}/api/v1/latestPosts`
         );
         if (response.data && response.data.blogs) {
           setData(response.data.blogs);

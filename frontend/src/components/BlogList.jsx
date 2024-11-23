@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BlogSection from "./BlogSection"; 
+
+const API_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:1000";
 const BlogList = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -8,7 +10,7 @@ const BlogList = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://blog-site-soll.onrender.com/api/v1/getBlogs"
+         `${API_URL}/api/v1/getBlogs`
         );
         // console.log("API response:", response);
         if (response.data && response.data.blogs) {

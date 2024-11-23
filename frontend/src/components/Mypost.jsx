@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:1000";
 const Mypost = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,7 +24,7 @@ const Mypost = () => {
         }
 
         const response = await axios.get(
-          `http://localhost:1000/api/v1/getUserBlogs/${userId}`,
+          `${API_URL}/api/v1/getUserBlogs/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -46,14 +47,11 @@ const Mypost = () => {
   const handleDelete = async (postId) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(
-        `https://blog-site-soll.onrender.com/api/v1/deleteBlog/${postId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await axios.delete(`${API_URL}/api/v1/deleteBlog/${postId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setPosts(posts.filter((post) => post._id !== postId));
     } catch (error) {
       console.error("Error deleting blog post:", error);
@@ -73,7 +71,7 @@ const Mypost = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `https://blog-site-soll.onrender.com/api/v1/updateBlogs/${editPostId}`,
+        `${API_URL}/api/v1/updateBlogs/${editPostId}`,
         updatedBlog,
         {
           headers: {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import {  useNavigate } from "react-router-dom";
+const API_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:1000";
 
 const AddPost = () => {
   const [data, setData] = useState({
@@ -21,7 +22,7 @@ const AddPost = () => {
     event.preventDefault();
     // console.log(data, userId)
     try {
-      await axios.post("https://blog-site-soll.onrender.com/api/v1/add", {
+      await axios.post( `${API_URL}/api/v1/add`, {
         data,
         userId,
       });

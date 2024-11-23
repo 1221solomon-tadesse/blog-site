@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import image from "../assets/Sign.png";
 import { UserContext } from "../contexts/UserContext";
+const API_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:1000";
 
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
@@ -16,7 +17,7 @@ const Login = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://blog-site-soll.onrender.com/auth/login",
+        `${API_URL}/auth/login`,
         data
       );
       console.log("Response Data:", response.data);

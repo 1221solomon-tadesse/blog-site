@@ -5,6 +5,7 @@ const bodyParser=require('body-parser')
 const loginRoute=require('./routes/login')
 const cors=require("cors")
 const app= express()
+require("./connection/conn")
 
 app.use(
   cors({
@@ -14,9 +15,7 @@ app.use(
     credentials: true,
   })
 );
-
-require("./connection/conn")
-app.use(cors())
+app.use((cors))
 app.use(bodyParser.json())
 app.use('/user',signupRoute)
 app.use('/auth',loginRoute)
@@ -25,3 +24,6 @@ app.use("/api/v1",blogRoute)
 app.listen(1000,()=>{
     console.log('SERVER STARTED SUCCESSFULY ')
 })
+app.get("/", (req, res) => {
+  res.send("Backend server is running successfully!");
+});

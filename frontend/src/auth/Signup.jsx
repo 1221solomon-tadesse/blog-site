@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import signup from "../assets/signup.png";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+
 const Signup = () => {
   const [data, setData] = useState({
     name: "",
@@ -14,11 +16,7 @@ const Signup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      // console.log(data);
-      await axios.post(
-        "https://blog-site-soll.onrender.com/user/register",
-        data
-      );
+      await axios.post(`${API_URL}/user/register`, data);
       setData({
         name: "",
         email: "",
@@ -44,8 +42,7 @@ const Signup = () => {
       >
         <h1 className="text-center text-2xl font-bold">Signup page</h1>
         <div className="flex w-fit">
-          <img src={signup} alt="sitgnup" className="w-1/2" />
-
+          <img src={signup} alt="signup" className="w-1/2" />
           <div className="w-1/2 justify-center flex flex-col mt-20">
             <div>
               <label

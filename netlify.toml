@@ -2,4 +2,4 @@
 from ="/*"
 to="/index.html"
 status=200
-
+//this is to  deploy from netlify

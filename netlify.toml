@@ -2,5 +2,5 @@
 from ="/*"
 to="/index.html"
 status=200
-//this is to deploy from netlify
+//this is to  deploy from netlify
 // it specify the index file and easly build

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from "../contexts/UserContext";
 import { useContext } from 'react';
-import { useLocation,Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 
 const Logout = () => {
@@ -21,12 +21,12 @@ const Logout = () => {
     navigate('/');
   };
   return (
-    <Link
+    <button
       to="/Logout"
       className={`${
-        pathname === "/Login" ? "bg-black" : ""
+        pathname === "/Logout" ? "bg-black" : ""
       } text-white hover:bg-gray-900 rounded-md px-4 py-2`}
-    ></Link>
+    ></button>
   );
 };
 

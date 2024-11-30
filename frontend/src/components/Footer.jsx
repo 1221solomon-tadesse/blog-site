@@ -3,10 +3,11 @@ import { FaFacebook } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { FaInstagram } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 const Footer = () => {  
   return (
     <main>
-      <footer className="bg-gray-800 text-white py-6">
+      <footer className="bg-blue-500 text-white py-6">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between ">
             <div className="mb-4 md:mb-0">
@@ -17,19 +18,19 @@ const Footer = () => {
               <h6 className="text-sm font-semibold">Links</h6>
               <ul>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     About
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     Services
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     Contact
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -37,24 +38,24 @@ const Footer = () => {
               <h6 className="text-sm font-semibold p-6">Follow Us</h6>
               <ul className="flex space-x-4 gap-6 ">
                 <li>
-                  <a href="#" className="hover:underline ">
+                  <Link href="#" className="hover:underline ">
                     <FaFacebook />
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     <BsTwitterX />
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     <FaLinkedinIn />
-                  </a>
-                </li>{" "}
+                  </Link>
+                </li>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     <FaInstagram />
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

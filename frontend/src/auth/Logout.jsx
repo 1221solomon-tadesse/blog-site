@@ -1,8 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from "../contexts/UserContext";
 import { useContext } from 'react';
+import { useLocation,Link } from "react-router-dom";
+
 
 const Logout = () => {
+   const location = useLocation();
+   const pathname = location.pathname;
   const navigate = useNavigate();
   const { setIsLoggedIn } = useContext(UserContext); 
 
@@ -17,9 +21,12 @@ const Logout = () => {
     navigate('/');
   };
   return (
-    <button className="hover:text-blue-600"  onClick={handleLogout}>
-      Logout
-    </button>
+    <Link
+      to="/Logout"
+      className={`${
+        pathname === "/Login" ? "bg-black" : ""
+      } text-white hover:bg-gray-900 rounded-md px-4 py-2`}
+    ></Link>
   );
 };
 

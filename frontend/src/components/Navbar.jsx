@@ -16,16 +16,16 @@ const Navbar = () => {
   return (
     <Headroom>
       <main>
-        <div className="text-center bg-gray-800 text-white p-5 w-full">
-          <div className="flex justify-between items-center">
+        <div className="text-center bg-gray-800 text-white p-5  md:w-full">
+          <div className="flex justify-between items-center ">
             <h1>LOGO</h1>
             <button className="md:hidden" onClick={toggleNavbar}>
               {isNavbarOpen ? <FaTimes /> : <FaBars />}
             </button>
           </div>
           <ul
-            className={`flex-col md:flex-row md:flex justify-around items-center text-xl ${
-              isNavbarOpen ? "block" : "hidden md:flex"
+            className={`flex-col md:flex-row  md:flex justify-around items-center text-xl ${
+              isNavbarOpen ? "block text-left w-1/2" : "hidden md:flex"
             }`}
           >
             {isLoggedIn ? (
